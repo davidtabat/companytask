@@ -1,0 +1,50 @@
+<?php
+/** @var \Devall\Tabatadze\Block\CompanyList $block */
+
+$companies = $block->getCompanies();
+?>
+<form method="post" id="companyform" action="<?= $block->escapeUrl($block->getAction()) ?>">
+    <?= $block->getBlockHtml('formkey') ?>
+    <select name="company" id="company">
+        <?php foreach ($companies as $company): ?>
+            <option
+                value="<?= $company->getId() ?>" <?php if ($company->getId() == $block->getCurrentCompany()): ?> selected <?php endif; ?>>
+                <?= $company->getName() ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+    <br>
+    <br>
+    <div class="primary">
+        <button type="submit"
+                class="action save primary"
+                title="<?= $block->escapeHtmlAttr(__('Save Company')) ?>">
+            <span><?= $block->escapeHtml(__('Save')) ?></span>
+        </button>
+    </div>
+</form>
+<div id="company-div" data-bind="scope: 'company-details'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "#company-div": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "company-details": {
+                        "component": "Devall_Tabatadze/js/details",
+                        "config": {
+                            "countrycompany" : "<?= $block->getCompany()->getCountry() ?>",
+                            "streetcompany" : "<?= $block->getCompany()->getStreet() ?>",
+                            "numstreet" : "<?= $block->getCompany()->getNumber() ?>",
+                            "sizecompany" : "<?= $block->getCompany()->getCompanySize() ?>",
+                            "template" : "Devall_Tabatadze/template"
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+</script>
