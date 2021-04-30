@@ -62,8 +62,7 @@ class EditPost extends Action
         Session $customerSession,
         PageFactory $resultPageFactory,
         AddressRegistry $addressRegistry = null
-    )
-    {
+    ) {
         $this->customerRepositoryInterface = $customerRepositoryInterface;
         $this->formKeyValidator = $formKeyValidator;
         $this->session = $customerSession;
@@ -72,8 +71,7 @@ class EditPost extends Action
         parent::__construct($context);
     }
 
-    public function execute()
-    {
+    public function execute() {
         $validFormKey = $this->formKeyValidator->validate($this->getRequest());
         if($validFormKey) {
             $data = $this->getRequest()->getParam(self::COMPANY_KEY);
@@ -102,8 +100,7 @@ class EditPost extends Action
      * @param CustomerInterface $customer
      * @throws NoSuchEntityException
      */
-    private function disableAddressValidation(CustomerInterface $customer)
-    {
+    private function disableAddressValidation(CustomerInterface $customer) {
         foreach ($customer->getAddresses() as $address) {
             $addressModel = $this->addressRegistry->retrieve($address->getId());
             $addressModel->setShouldIgnoreValidation(true);

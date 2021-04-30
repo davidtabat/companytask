@@ -64,16 +64,14 @@ class CompanyList extends Template
      *
      * @return string
      */
-    public function getAction()
-    {
+    public function getAction() {
         return $this->getUrl('devall/company/editpost');
     }
 
     /**
      * @return int
      */
-    public function getCustomerId()
-    {
+    public function getCustomerId() {
         return $this->customerSession->getId();
     }
 
@@ -103,5 +101,9 @@ class CompanyList extends Template
         $companyId = $customer->getCustomAttribute(Company::COMPANY_ATTRIBUTE_CODE)->getValue();
         $company = $this->companyRepository->getById($companyId);
         return $company;
+    }
+
+    public function getListApi(){
+        return $this->companyRepository->getListApi();
     }
 }

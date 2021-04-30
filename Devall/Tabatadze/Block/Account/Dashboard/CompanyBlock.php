@@ -37,8 +37,8 @@ class CompanyBlock extends Template
         CompanyRepositoryInterface $companyRepositoryInterface,
         CustomerRepositoryInterface $customerRepositoryInterface,
         Template\Context $context,
-        array $data = [])
-    {
+        array $data = []
+    ) {
         parent::__construct($context, $data);
         $this->customerRepositoryInterface = $customerRepositoryInterface;
         $this->customerSession = $customerSession;
@@ -60,8 +60,7 @@ class CompanyBlock extends Template
     /**
      * @return int
      */
-    public function getCustomerId()
-    {
+    public function getCustomerId(){
         return $this->customerSession->getId();
     }
 
@@ -117,8 +116,7 @@ class CompanyBlock extends Template
     /**
      * @return string
      */
-    public function getCompanyEditUrl()
-    {
+    public function getCompanyEditUrl(){
         return $this->getUrl('devall/company/edit/');
     }
 }

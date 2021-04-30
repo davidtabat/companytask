@@ -38,8 +38,7 @@ class CustomerCompanyAttribute implements DataPatchInterface, PatchRevertableInt
     /**
      * {@inheritdoc}
      */
-    public function apply()
-    {
+    public function apply() {
         $this->moduleDataSetup->getConnection()->startSetup();
         /** @var CustomerSetup $customerSetup */
         $customerSetup = $this->customerSetupFactory->create(['setup' => $this->moduleDataSetup]);
@@ -69,8 +68,7 @@ class CustomerCompanyAttribute implements DataPatchInterface, PatchRevertableInt
         $this->moduleDataSetup->getConnection()->endSetup();
     }
 
-    public function revert()
-    {
+    public function revert() {
         $this->moduleDataSetup->getConnection()->startSetup();
         /** @var CustomerSetup $customerSetup */
         $customerSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
@@ -82,16 +80,14 @@ class CustomerCompanyAttribute implements DataPatchInterface, PatchRevertableInt
     /**
      * {@inheritdoc}
      */
-    public function getAliases()
-    {
+    public function getAliases() {
         return [];
     }
 
     /**
      * {@inheritdoc}
      */
-    public static function getDependencies()
-    {
+    public static function getDependencies() {
         return [
 
         ];

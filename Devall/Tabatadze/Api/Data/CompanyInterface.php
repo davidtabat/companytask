@@ -7,7 +7,7 @@ interface CompanyInterface
     /**
      * @return int
      */
-    public function getId();
+    public function getId(): int;
 
     /**
      * @param int $id
@@ -18,55 +18,55 @@ interface CompanyInterface
     /**
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * @param string $name
      * @return void
      */
-    public function setName($name);
+    public function setName(string $name);
 
     /**
      * @return string
      */
-    public function getCountry();
+    public function getCountry(): string;
 
     /**
      * @param string $country
      * @return void
      */
-    public function setCountry($country);
+    public function setCountry(string $country);
 
     /**
      * @return string
      */
-    public function getStreet();
+    public function getStreet(): string;
 
     /**
      * @param string $street
      * @return void
      */
-    public function setStreet($street);
+    public function setStreet(string $street);
 
     /**
-     * @return string
+     * @return int
      */
-    public function getNumber();
+    public function getNumber(): int;
 
     /**
      * @param int $number
      * @return void
      */
-    public function setNumber($number);
+    public function setNumber(int $number);
 
     /**
      * @return int
      */
-    public function getCompanySize();
+    public function getCompanySize(): int;
 
     /**
      * @param int $size
      * @return void
      */
-    public function setCompanySize($size);
+    public function setCompanySize(int $size);
 }

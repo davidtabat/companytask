@@ -19,67 +19,102 @@ class Company extends AbstractModel implements CompanyInterface
      */
     const COMPANY_ATTRIBUTE_CODE = 'customer_pan_number';
 
-    protected function _construct()
-    {
-        $this->_init(\Devall\Tabatadze\Model\ResourceModel\Company::class);
+    protected function _construct() {
+        $this->_init(ResourceModel\Company::class);
     }
 
-    public function getId()
+    /**
+     * @inheritdoc
+     */
+    public function getId(): int
     {
         return $this->_getData(self::ENTITY_ID);
     }
 
-    public function setId($id)
+    /**
+     * @inheritdoc
+     */
+    public function setId($id): void
     {
         $this->setData(self::ENTITY_ID);
     }
 
-    public function getName()
+    /**
+     * @inheritdoc
+     */
+    public function getName(): string
     {
         return $this->_getData(self::NAME);
     }
 
-    public function setName($name)
+    /**
+     * @inheritdoc
+     */
+    public function setName(string $name): void
     {
         $this->setData(self::NAME);
     }
 
-    public function getCountry()
+    /**
+     * @inheritdoc
+     */
+    public function getCountry(): string
     {
         return $this->_getData(self::COUNTRY);
     }
 
-    public function setCountry($country)
+    /**
+     * @inheritdoc
+     */
+    public function setCountry(string $country): void
     {
         $this->setData(self::COUNTRY);
     }
 
-    public function getStreet()
+    /**
+     * @inheritdoc
+     */
+    public function getStreet(): string
     {
         return $this->_getData(self::STREET);
     }
 
-    public function setStreet($street)
+    /**
+     * @inheritdoc
+     */
+    public function setStreet(string $street): void
     {
         $this->setData(self::STREET);
     }
 
-    public function getNumber()
+    /**
+     * @inheritdoc
+     */
+    public function getNumber(): int
     {
         return $this->_getData(self::NUMBER);
     }
 
-    public function setNumber($number)
+    /**
+     * @inheritdoc
+     */
+    public function setNumber(int $number): void
     {
         $this->setData(self::NUMBER);
     }
 
-    public function getCompanySize()
+    /**
+     * @inheritdoc
+     */
+    public function getCompanySize(): int
     {
         return $this->_getData(self::COMPANY_SIZE);
     }
 
-    public function setCompanySize($size)
+    /**
+     * @inheritdoc
+     */
+    public function setCompanySize(int $size): void
     {
         $this->setData(self::COMPANY_SIZE);
     }
