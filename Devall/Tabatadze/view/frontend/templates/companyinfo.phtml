@@ -7,7 +7,7 @@ $companies = $block->getCompanies();
     <select name="company" id="company">
         <?php foreach ($companies as $company): ?>
             <option
-                value="<?= $company->getId() ?>" <?php if ($company->getId() == $block->getCurrentCompany()): ?> selected <?php endif; ?>>
+                value="<?= $company->getId() ?>" <?php if ($company->getId() == $block->getCurrentCompanyId()): ?> selected <?php endif; ?>>
                 <?= $company->getName() ?>
             </option>
         <?php endforeach; ?>
