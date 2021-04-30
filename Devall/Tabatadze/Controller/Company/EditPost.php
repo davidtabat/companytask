@@ -43,7 +43,6 @@ class EditPost extends Action
     private $addressRegistry;
 
     const COMPANY_KEY = 'company';
-    const DOMAIN_NAME = 'http://localhost';
 
 
     /**
@@ -89,7 +88,7 @@ class EditPost extends Action
             $this->messageManager->addErrorMessage($e, __("We can\'t submit your request, Please try again."));
         }
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-        $resultRedirect->setUrl(self::DOMAIN_NAME . '/customer/account');
+        $resultRedirect->setUrl('/customer/account');
         return $resultRedirect;
 
     }
