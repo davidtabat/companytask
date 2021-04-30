@@ -81,12 +81,10 @@ class CompanyList extends Template
      * @throws \Magento\Framework\Exception\LocalizedException
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function getCurrentCompany(){
-        $customerId = $this->getCustomerId();
-        $customer = $this->customerRepositoryInterface->getById($customerId);
-        $companyId = $customer->getCustomAttribute(Company::COMPANY_ATTRIBUTE_CODE);
-        if (!empty($companyId)) {
-            return $companyId->getValue();
+    public function getCurrentCompanyId(){
+        $companyAttribute = $this->getCompanyAttribute();
+        if (!empty($companyAttribute)) {
+            return $companyAttribute->getValue();
         }
         return false;
     }
@@ -96,13 +94,26 @@ class CompanyList extends Template
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function getCompany(){
-        $customerId = $this->getCustomerId();
-        $customer = $this->customerRepositoryInterface->getById($customerId);
-        $companyId = $customer->getCustomAttribute(Company::COMPANY_ATTRIBUTE_CODE)->getValue();
+        $companyId = $this->getCompanyAttribute()->getValue();
         $company = $this->companyRepository->getById($companyId);
         return $company;
     }
 
+    /**
+     * @return \Magento\Framework\Api\AttributeInterface|null
+     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
+    public function getCompanyAttribute(){
+        $customerId = $this->getCustomerId();
+        $customer = $this->customerRepositoryInterface->getById($customerId);
+        return $customer->getCustomAttribute(Company::COMPANY_ATTRIBUTE_CODE);
+    }
+
+    /**
+     * @return array|Collection[]
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function getListApi(){
         return $this->companyRepository->getListApi();
     }
